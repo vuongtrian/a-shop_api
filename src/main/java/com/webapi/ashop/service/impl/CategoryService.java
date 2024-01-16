@@ -83,7 +83,7 @@ public class CategoryService implements ICategoryService {
     @Override
     @Cacheable(value = "category", key = "'allCategories'")
     public List<CategoryResponseDTO> getCategories() throws CategoryServiceException{
-        List<CategoryResponseDTO> categoryResponseDTOS = null;
+        List<CategoryResponseDTO> categoryResponseDTOS;
         try {
             log.info("CategoryService:getCategories execution started.");
 

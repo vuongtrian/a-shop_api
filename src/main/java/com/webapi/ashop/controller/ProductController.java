@@ -42,7 +42,7 @@ public class ProductController {
 
         log.info("ProductController::createNewProduct response {}", ProductValueMapper.jsonAsString(responseDTO));
 
-        return new ResponseEntity<APIResponse>(responseDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/{productId}")
@@ -59,7 +59,7 @@ public class ProductController {
 
         log.info("ProductController::updateProduct response {}", ProductValueMapper.jsonAsString(responseDTO));
 
-        return new ResponseEntity<APIResponse>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping
@@ -75,7 +75,7 @@ public class ProductController {
 
         log.info("ProductController::getProducts response {}", ProductValueMapper.jsonAsString(responseDTO));
 
-        return new ResponseEntity<APIResponse>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{productId}")
@@ -93,13 +93,13 @@ public class ProductController {
         log.info("ProductController::getProduct by id  {} response {}", productId,ProductValueMapper
                 .jsonAsString(productResponseDTO));
 
-        return new ResponseEntity<APIResponse>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/{productId}")
     public ResponseEntity<?> deleteProduct(@PathVariable int productId) {
         log.info("ProductController::deleteProduct by id  {}", productId);
         productService.deleteProductById(productId);
-        return new ResponseEntity<APIResponse>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
