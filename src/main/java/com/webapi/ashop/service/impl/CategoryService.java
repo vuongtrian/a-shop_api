@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -33,7 +31,7 @@ public class CategoryService implements ICategoryService {
     private ICategoryRepository categoryRepository;
 
     @Override
-    @CacheEvict(value = "category")
+    @CacheEvict(value = "category", key = "'allCategories'")
     public CategoryResponseDTO createNewCategory(CategoryRequestDTO categoryRequestDTO) throws CategoryServiceException {
         CategoryResponseDTO categoryResponseDTO;
 
@@ -54,7 +52,6 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-
     @Caching(put = {
             @CachePut(value = "category", key = "#categoryId")
     }, evict = {
@@ -76,7 +73,7 @@ public class CategoryService implements ICategoryService {
             categoryResponseDTO = CategoryValueMapper.convertToDTO(categoryResults);
             log.debug("CategoryService:updateCategory received response from Database {}", CategoryValueMapper.jsonAsString(categoryResponseDTO));
         }catch (Exception ex) {
-            log.error("Exception occurred while update categories from database , Exception message {}", ex.getMessage());
+            log.error("Exception occurred while update category from database , Exception message {}", ex.getMessage());
             throw new CategoryServiceException("Exception occurred while update category");
         }
         log.info("CategoryService:updateCategory execution ended.");
@@ -100,7 +97,7 @@ public class CategoryService implements ICategoryService {
                 categoryResponseDTOS = Collections.emptyList();
             }
 
-            log.debug("CategoryService:getCategories retrieving category from database  {}", CategoryValueMapper.jsonAsString(categoryResponseDTOS));
+            log.debug("CategoryService:getCategories retrieving categories from database  {}", CategoryValueMapper.jsonAsString(categoryResponseDTOS));
 
         } catch (Exception ex) {
             log.error("Exception occurred while retrieving categories from database , Exception message {}", ex.getMessage());

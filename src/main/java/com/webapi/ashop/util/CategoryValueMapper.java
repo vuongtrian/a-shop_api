@@ -6,9 +6,6 @@ import com.webapi.ashop.entity.Category;
 import com.webapi.ashop.entity.dto.CategoryRequestDTO;
 import com.webapi.ashop.entity.dto.CategoryResponseDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class CategoryValueMapper {
     public static Category convertToEntity(CategoryRequestDTO categoryRequestDTO) {
         Category category = new Category();
@@ -23,11 +20,6 @@ public class CategoryValueMapper {
         categoryResponseDTO.setName(category.getName());
         categoryResponseDTO.setDescription(category.getDescription());
         return categoryResponseDTO;
-    }
-
-    public static List<CategoryResponseDTO> convertToListDTO (List<Category> categories) {
-        List<CategoryResponseDTO> categoryResponseDTOS = categories.stream().map(category -> convertToDTO(category)).collect(Collectors.toList());
-        return categoryResponseDTOS;
     }
 
     public static String jsonAsString(Object obj){

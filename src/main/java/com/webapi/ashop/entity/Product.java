@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -20,7 +20,5 @@ public class Product {
     private Integer id;
     private String name;
     private String description;
-    private double price;
-    private LocalDate created_at;
-    private LocalDate updated_at;
+    private BigDecimal price;
 }
