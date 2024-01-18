@@ -68,7 +68,7 @@ public class FileDataService implements IFileDataService {
             fileDataResponseDTO = FileDataValueMapper.convertToDTO(fileData);
             log.debug("FileDataService:getFileById retrieving file from database for id {} {}", fileId, ProductValueMapper.jsonAsString(fileDataResponseDTO));
         } catch (Exception ex) {
-            log.error("Exception occurred while retrieving file {} from database , Exception message {}", ex.getMessage());
+            log.error("Exception occurred while retrieving file from database , Exception message {}", ex.getMessage());
             throw new FileDataServiceException("Exception occurred while fetch file from Database " + fileId);
         }
         log.info("FileDataService:getFileById execution ended.");
