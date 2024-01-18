@@ -30,3 +30,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'a-shop_jarfile'
     publishLocation: 'Container'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(9ad811dc-bca6-4c68-b67c-e0f3fffec9fa)'
+    appType: 'webAppLinux'
+    WebAppName: 'a-shop-api'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
+    RuntimeStack: 'JAVA|17-java17'
