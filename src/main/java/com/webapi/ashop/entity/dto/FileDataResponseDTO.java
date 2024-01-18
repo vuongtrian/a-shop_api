@@ -1,19 +1,15 @@
-package com.webapi.ashop.entity;
+package com.webapi.ashop.entity.dto;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class FileData {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class FileDataResponseDTO {
     private Integer id;
     private String name;
     private String type;
