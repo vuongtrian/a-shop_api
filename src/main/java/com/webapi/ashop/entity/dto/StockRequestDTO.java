@@ -2,6 +2,7 @@ package com.webapi.ashop.entity.dto;
 
 import com.webapi.ashop.entity.FileData;
 import com.webapi.ashop.entity.enumObj.ProductSize;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -25,7 +26,8 @@ public class StockRequestDTO {
     private String color;
     @NotBlank(message = "Product size shouldn't be NULL OR EMPTY")
     private ProductSize size;
-    @Min(value = 0, message = "Product quantity must higher than 0")
+    @Min(value = 0, message = "Product quantity must higher or equal than 0")
     private int quantity;
+    @Max(value = 4, message = "Product images must lower or equal than 4")
     List<FileData> images;
 }
